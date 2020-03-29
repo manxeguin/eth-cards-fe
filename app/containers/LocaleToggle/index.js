@@ -1,31 +1,24 @@
-/*
- *
- * LanguageToggle
- *
- */
-
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { createSelector } from 'reselect';
 
 import Toggle from 'components/Toggle';
-import Wrapper from './Wrapper';
 import messages from './messages';
 import { appLocales } from '../../i18n';
-import { changeLocale } from '../LanguageProvider/actions';
-import { makeSelectLocale } from '../LanguageProvider/selectors';
+import { changeLocale } from '../../state/actions';
+import { makeSelectLocale } from '../../state/selectors';
 
 export function LocaleToggle(props) {
   return (
-    <Wrapper>
+    <div>
       <Toggle
         value={props.locale}
         values={appLocales}
         messages={messages}
         onToggle={props.onLocaleToggle}
       />
-    </Wrapper>
+    </div>
   );
 }
 

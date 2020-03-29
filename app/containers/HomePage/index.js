@@ -1,9 +1,3 @@
-/*
- * HomePage
- *
- * This is the first thing users see of our App, at the '/' route
- */
-
 import React, { useEffect, memo } from 'react';
 import PropTypes from 'prop-types';
 import { Helmet } from 'react-helmet';
@@ -14,24 +8,18 @@ import { createStructuredSelector } from 'reselect';
 
 import { useInjectReducer } from 'utils/injectReducer';
 import { useInjectSaga } from 'utils/injectSaga';
+import ReposList from 'components/ReposList';
 import {
   makeSelectRepos,
   makeSelectLoading,
   makeSelectError,
-} from 'containers/App/selectors';
-import H2 from 'components/H2';
-import ReposList from 'components/ReposList';
-import AtPrefix from './AtPrefix';
-import CenteredSection from './CenteredSection';
-import Form from './Form';
-import Input from './Input';
-import Section from './Section';
+} from '../../state/selectors';
 import messages from './messages';
-import { loadRepos } from '../App/actions';
+import { loadRepos } from '../../state/actions';
 import { changeUsername } from './actions';
 import { makeSelectUsername } from './selectors';
 import reducer from './reducer';
-import saga from './saga';
+import saga from '../../state/sagas';
 
 const key = 'home';
 
@@ -47,7 +35,6 @@ export function HomePage({
   useInjectSaga({ key, saga });
 
   useEffect(() => {
-    // When initial state username is not null, submit the form to load repos
     if (username && username.trim().length > 0) onSubmitForm();
   }, []);
 
@@ -61,41 +48,38 @@ export function HomePage({
     <article>
       <Helmet>
         <title>Home Page</title>
-        <meta
-          name="description"
-          content="A React.js Boilerplate application homepage"
-        />
+        <meta name="description" content="A React.js application homepage" />
       </Helmet>
       <div>
-        <CenteredSection>
-          <H2>
-            <FormattedMessage {...messages.startProjectHeader} />
-          </H2>
-          <p>
-            <FormattedMessage {...messages.startProjectMessage} />
-          </p>
-        </CenteredSection>
-        <Section>
-          <H2>
-            <FormattedMessage {...messages.trymeHeader} />
-          </H2>
-          <Form onSubmit={onSubmitForm}>
-            <label htmlFor="username">
-              <FormattedMessage {...messages.trymeMessage} />
-              <AtPrefix>
-                <FormattedMessage {...messages.trymeAtPrefix} />
-              </AtPrefix>
-              <Input
-                id="username"
-                type="text"
-                placeholder="mxstbr"
-                value={username}
-                onChange={onChangeUsername}
-              />
-            </label>
-          </Form>
-          <ReposList {...reposListProps} />
-        </Section>
+        <section>
+          <div className="container is-space-m">
+            <div className="section-heading has-text-centered">
+              <h3 className="title is-2 ">
+                <FormattedMessage {...messages.trymeHeader} />
+              </h3>
+              <h4 className="subtitle is-5">
+                <FormattedMessage {...messages.trymeMessage} />
+              </h4>
+              <div className="container has-text-centered">
+                <form onSubmit={onSubmitForm}>
+                  <label htmlFor="username">
+                    <span>
+                      <FormattedMessage {...messages.trymeAtPrefix} />
+                    </span>
+                    <input
+                      id="username"
+                      type="text"
+                      placeholder="mxstbr"
+                      value={username}
+                      onChange={onChangeUsername}
+                    />
+                  </label>
+                </form>
+              </div>
+            </div>
+            <ReposList {...reposListProps} />
+          </div>
+        </section>
       </div>
     </article>
   );

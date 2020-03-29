@@ -1,46 +1,50 @@
-/**
- * RepoListItem
- *
- * Lists the name and the issue count of a repository
- */
-
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 import { FormattedNumber } from 'react-intl';
-
-import { makeSelectCurrentUser } from 'containers/App/selectors';
 import ListItem from 'components/ListItem';
-import IssueIcon from './IssueIcon';
-import IssueLink from './IssueLink';
-import RepoLink from './RepoLink';
-import Wrapper from './Wrapper';
+import { makeSelectCurrentUser } from '../../state/selectors';
 
 export function RepoListItem(props) {
   const { item } = props;
   let nameprefix = '';
 
-  // If the repository is owned by a different person than we got the data for
-  // it's a fork and we should show the name of the owner
   if (item.owner.login !== props.currentUser) {
     nameprefix = `${item.owner.login}/`;
   }
 
-  // Put together the content of the repository
   const content = (
-    <Wrapper>
-      <RepoLink href={item.html_url} target="_blank">
-        {nameprefix + item.name}
-      </RepoLink>
-      <IssueLink href={`${item.html_url}/issues`} target="_blank">
-        <IssueIcon />
-        <FormattedNumber value={item.open_issues_count} />
-      </IssueLink>
-    </Wrapper>
+    <article className="post is-space-s">
+      <h4 className="title is-5">{nameprefix + item.name}</h4>
+      <div className="media">
+        <div className="media-left">
+          <p className="image is-32x32">
+            <img
+              alt="asdfsdf"
+              src="http://bulma.io/images/placeholders/128x128.png"
+            />
+          </p>
+        </div>
+        <div className="media-content">
+          <div className="content">
+            <p>
+              <a href={item.html_url} target="_blank">
+                {item.html_url}
+              </a>
+            </p>
+          </div>
+        </div>
+        <div className="media-right">
+          <span className="has-text-grey-light">
+            <i className="fa fa-comments" />{' '}
+            <FormattedNumber value={item.open_issues_count} />
+          </span>
+        </div>
+      </div>
+    </article>
   );
 
-  // Render the content into a list item
   return <ListItem key={`repo-list-item-${item.full_name}`} item={content} />;
 }
 
