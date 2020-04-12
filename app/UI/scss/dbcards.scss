@@ -1,0 +1,139 @@
+$border-radius-size: 16px;
+$goku: #ec9b3b;
+$broly: #48863d;
+$vegeta: #134489;
+
+$gold-background: radial-gradient(
+    ellipse farthest-corner at right bottom,
+    #fedb37 0%,
+    #fdb931 8%,
+    #9f7928 30%,
+    #8a6e2f 40%,
+    transparent 80%
+  ),
+  radial-gradient(
+    ellipse farthest-corner at left top,
+    #ffffff 0%,
+    #ffffac 8%,
+    #d1b464 25%,
+    #5d4a1f 62.5%,
+    #5d4a1f 100%
+  );
+
+body {
+  background: linear-gradient(to right, #061161, #780206);
+}
+
+@media only screen and (max-width: 480px) {
+  .dbz-card {
+    margin-top: 128px;
+  }
+  .ether-icon {
+    left: $space-2xl;
+  }
+}
+
+.dbz-card {
+  background: white;
+  width: 300px;
+  box-shadow: 4px 4px 9px 0px #00000047;
+  border-radius: $border-radius-size;
+}
+
+.dbz-card__image {
+  height: 230px;
+  border-top-left-radius: $border-radius-size;
+  border-top-right-radius: $border-radius-size;
+  img {
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+}
+
+.dbz-card__image--goku {
+  background: $gold-background;
+  img {
+    height: 350px;
+    transform: translate(60%, -25%);
+  }
+}
+
+.dbz-card__image--broly {
+  background: linear-gradient(to right, #d8ef7d, #48863d);
+  img {
+    height: 390px;
+    transform: translate(5%, -27%);
+  }
+}
+
+.dbz-card__image--majin-vegeta {
+  background: linear-gradient(to right, #134489, #fbfcfa);
+  img {
+    height: 350px;
+    transform: translate(0, -25%);
+  }
+}
+
+.dbz-card__level {
+  text-transform: uppercase;
+  font-size: 12px;
+  font-weight: 700;
+  padding-top: $space-l;
+}
+
+.dbz-card__level--goku {
+  color: $goku;
+}
+.dbz-card__level--broly {
+  color: $broly;
+}
+.dbz-card__level--majin-vegeta {
+  color: $vegeta;
+}
+
+.dbz-card__unit-name {
+  color: black;
+  font-weight: 900;
+}
+
+.dbz-card__unit-description {
+  padding: $space-l;
+}
+
+.ether-icon {
+  background-image: url("https://firebasestorage.googleapis.com/v0/b/alborea-7ecf0.appspot.com/o/dbz%2Flarge%2Fether.png?alt=media&amp;token=b31d3f71-0590-4848-9c8f-149ce3eabe4f");
+  height: $space-xl;
+  width: $space-xl;
+  background-size: cover;
+  position: absolute;
+  left: $space-m;
+}
+
+.power {
+  font-family: "Bangers";
+  white-space: nowrap;
+  background: -webkit-linear-gradient(#fcc132, #735b27);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.price {
+  font-weight: 700;
+}
+
+.is-hero-dbz {
+  background-image: url('../images/dragonbackground.jpg');
+  background-position-y: -110px;
+}
+
+.is-blur {
+  background-color: #1c0a1f73;
+}
+
+.dbz-app-title {
+  font-family: Bangers;
+    text-shadow: 3px 2px 4px rgb(16, 7, 14);
+    font-size: 59px;
+    letter-spacing: 2px;
+}

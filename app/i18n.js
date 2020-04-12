@@ -2,8 +2,8 @@ const addLocaleData = require('react-intl').addLocaleData; //eslint-disable-line
 const enLocaleData = require('react-intl/locale-data/en');
 const deLocaleData = require('react-intl/locale-data/de');
 
-const enTranslationMessages = require('./translations/en.json');
-const deTranslationMessages = require('./translations/de.json');
+const enTranslationMessages = require('./UI/translations/en.json');
+const deTranslationMessages = require('./UI/translations/de.json');
 
 addLocaleData(enLocaleData);
 addLocaleData(deLocaleData);

@@ -1,0 +1,26 @@
+@charset "utf-8";
+
+// // Update Bulma's global variables
+$family-sans-serif: "Rubik", sans-serif;
+
+// Update some of Bulma's component variables
+@import "./generic.scss";
+
+// Import only what you need from Bulma
+@import "bulma/sass/utilities/_all.sass";
+@import "bulma/sass/base/_all.sass";
+@import "bulma/sass/grid/_all.sass";
+@import "bulma/sass/elements/container.sass";
+
+// styles used in header
+@import "bulma/sass/components/navbar.sass";
+@import "bulma/sass/layout/hero.sass";
+@import "bulma/sass/components/tabs.sass";
+@import "bulma/sass/elements/button.sass";
+
+@import "bulma/sass/elements/box.sass";
+@import "bulma/sass/elements/title.sass";
+@import "bulma/sass/elements/image.sass";
+@import "bulma/sass/components/media.sass";
+@import "./dbcards.scss";
+

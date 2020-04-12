@@ -7,17 +7,19 @@ import { ConnectedRouter } from 'connected-react-router';
 import history from 'utils/history';
 import 'sanitize.css/sanitize.css';
 
-import App from 'containers/App';
-import LanguageProvider from 'containers/LanguageProvider';
+import App from 'UI/containers/App';
+import LanguageProvider from 'UI/containers/LanguageProvider';
+import blockchainSaga from './state/sagas/blockchain';
 
-import '!file-loader?name=[name].[ext]!./images/favicon.ico';
+import '!file-loader?name=[name].[ext]!./UI/images/favicon.ico';
 
 import configureStore from './configureStore';
 import { translationMessages } from './i18n';
-import './scss/index.scss';
+import './UI/scss/index.scss';
 
 const initialState = {};
 const store = configureStore(initialState, history);
+store.runSaga(blockchainSaga);
 const MOUNT_NODE = document.getElementById('app');
 
 const render = messages => {
@@ -34,7 +36,7 @@ const render = messages => {
 };
 
 if (module.hot) {
-  module.hot.accept(['./i18n', 'containers/App'], () => {
+  module.hot.accept(['./i18n', 'UI/containers/App'], () => {
     ReactDOM.unmountComponentAtNode(MOUNT_NODE);
     render(translationMessages);
   });

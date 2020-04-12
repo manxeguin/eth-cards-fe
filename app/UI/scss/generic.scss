@@ -1,0 +1,29 @@
+@import url('https://fonts.googleapis.com/css?family=Rubik:400,500,700');
+@import url('https://fonts.googleapis.com/css?family=Bangers');
+
+$space-s: 8px;
+$space-m: 16px;
+$space-l: 24px;
+$space-xl: 32px;
+$space-2xl: 64px;
+
+.is-space-s {
+  padding: $space-s;
+}
+.is-space-m {
+  padding: $space-m;
+}
+.is-space-l {
+  padding: $space-l;
+}
+.is-space-xl {
+  padding: $space-xl;
+}
+
+.is-space-2xl-top {
+  padding-top: $space-2xl;
+}
+
+.is-font-xl {
+  font-size: 24px;
+}
